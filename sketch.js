@@ -23,14 +23,91 @@ function draw(){
            var b = pixels[startingIndex + 2];
            var a = pixels[startingIndex + 3];
            
-          pixels[startingIndex] = r+50; //red
-          pixels[startingIndex + 1] = g+50; //green
-          pixels[startingIndex + 2] = b+50; //blue
-          pixels[startingIndex + 3] = a; //transparent(alpha)
+           
+          if(keyIsPressed){
+              if(key=="1"){
+                 me_filter(startingIndex, r, a); 
+              }
+              
+              if(key=="2"){
+                 myself_filter(startingIndex, g, a); 
+              }
+              
+              if(key=="3"){
+                 andI_filter(startingIndex, r, b, g, a); 
+              }
+              
+              if(key=="4"){
+                 love_filter(startingIndex, r, b, g, a); 
+              }
+              
+               if(key=="5"){
+                 cool_filter(startingIndex, r, b, g, a); 
+              }
+              
+              if(key=="6"){
+                 awesome_filter(startingIndex, r, b, g, a); 
+              }
+              
+              if(key=="7"){
+                 tired_filter(startingIndex, r, b, g, a, col, row); 
+              }
+          }
+          
         }
     }
     
     
     
     updatePixels();
+}
+
+function me_filter(startingIndex, r, a){
+    pixels[startingIndex + 0] = r; //red
+    pixels[startingIndex + 1] = r; //green
+    pixels[startingIndex + 2] = r; //blue
+    pixels[startingIndex + 3] = a; //transparent(alpha)
+}
+
+
+function myself_filter(startingIndex, g, a){
+    pixels[startingIndex] = 0; //red
+    pixels[startingIndex + 1] = g; //green
+    pixels[startingIndex + 2] = 0; //blue
+    pixels[startingIndex + 3] = a; //transparent(alpha)
+}
+
+function andI_filter(startingIndex, r, b, g, a){
+    pixels[startingIndex] = r; //red
+    pixels[startingIndex + 1] = b; //green
+    pixels[startingIndex + 2] = g; //blue
+    pixels[startingIndex + 3] = a; //transparent(alpha)
+}
+
+function love_filter(startingIndex, r, b, g, a){
+    pixels[startingIndex] = r/2; //red
+    pixels[startingIndex + 1] = g/2; //green
+    pixels[startingIndex + 2] = b/2; //blue
+    pixels[startingIndex + 3] = a; //transparent(alpha)
+}
+
+function cool_filter(startingIndex, r, b, g, a){
+    pixels[startingIndex] = r*2; //red
+    pixels[startingIndex + 1] = b*2; //green
+    pixels[startingIndex + 2] = g*2; //blue
+    pixels[startingIndex + 3] = a; //transparent(alpha)
+}
+
+function awesome_filter(startingIndex, r, b, g, a){
+    pixels[startingIndex] = 255 - r; //red
+    pixels[startingIndex + 1] = 255 - b; //green
+    pixels[startingIndex + 2] = 255 - g; //blue
+    pixels[startingIndex + 3] = a; //transparent(alpha)
+}
+
+function tired_filter(startingIndex, r, b, g, a, col, row){
+    pixels[startingIndex] = r + col -200; //red
+    pixels[startingIndex + 1] = b - row + 10; //green
+    pixels[startingIndex + 2] = g - 20; //blue
+    pixels[startingIndex + 3] = a; //transparent(alpha)
 }
